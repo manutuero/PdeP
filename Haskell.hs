@@ -345,7 +345,36 @@ multiplicarElementos' lista = foldr (*) 1 lista
 dispersion' lista = maximum lista - minimum lista
 
 -- Listas por comprension o listas intensionales --
+{-
+    Las listas por comprension son como los conjuntos matematicos definidos de la misma manera.
+	La sintaxis es:
+	[funcion de salida | variable <- conjunto de entrada , predicado (opcional)]
+	
+	Tambien se puede trabajar con varias listas, es decir con varios conjuntos de entrada, ej.:
+    [ x*y | x <- [2,5,10], y <- [8,10,11]]
+    [16,20,22,40,50,55,80,100,110] 
+	
+	Como se puede ver, Haskell hace un producto cartesiano entre ambos dominios pasando luego por la funcion de salida.
+	Si no filtramos usando el predicado obtenemos el producto cartesiano, en caso de usarlo:
+	
+    [ x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+    [55,80,100,110]
+-}
+
 --4.1
-multiplos l n = [x | x <- l, mod x n == 0]
+multiplos lista n = [x | x <- lista, mod x n == 0]
 
 --4.2
+doblesDeLosPares lista = [2*x | x <- lista,even x]
+
+--4.3
+menoresA n lista = [x | x <- lista, x < n]
+
+--4.4
+diferencia lista1 lista2 = [x | x <- lista1, (not.elem x) lista2]
+
+--4.5
+interseccion lista1 lista2 = [x | x <- lista1, y <- lista2, x == y]
+
+--4.6
+-- continuara..
