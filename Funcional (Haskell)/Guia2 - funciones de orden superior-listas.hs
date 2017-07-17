@@ -1,5 +1,12 @@
+import Data.List (genericLength)
+
 -- Funcional guia 2 --
 -- Manejo de Funciones de Orden Superior y Listas --
+
+-- Funcion de la guia 1 que voy a usar mucho :)
+esMultiploDe :: Int -> Int -> Bool
+esMultiploDe x y = (mod x y) == 0
+
 
 -- Funciones de Orden Superior --
 --1.1 
@@ -58,7 +65,10 @@ cuandoHizoMasLlamadas | ((length.snd.fst) duracionLlamadas >).(length.snd.snd) $
 esMultiploDeAlguno numero = any (esMultiploDe numero)
 
 --3.2
-calcularPromedio lista = fromInteger(sum lista)/(fromInteger.toInteger.length) lista
+calcularPromedio lista = fromInteger(sum lista)/(fromInteger.toInteger.length) lista -- asi hay que hacerlo sin la funcion importada "genericLength"
+
+calcularPromedio' lista = sum lista / genericLength lista -- asi es si la importamos haciendo "import Data.List (genericLength)"
+
 promedios lista = (map calcularPromedio) lista
 
 --3.3
